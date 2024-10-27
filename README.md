@@ -1,9 +1,10 @@
-# Valentine's Day Web App CICD Project
+# Valentine’s Day Web App CICD Project
 
 ## Project Overview
 The **Valentine’s Day Web App CICD Project** is a fun and interactive web application designed for Valentine's Day. It features a unique interface where users can engage with romantic prompts and select dates. This project showcases the implementation of Continuous Integration and Continuous Deployment (CICD) practices using modern DevOps tools.
 
 ## Features
+
 - **Interactive User Interface**: Engaging front-end that allows users to select dates and respond to romantic questions.
 - **CICD Pipeline**: Automated build, test, and deployment processes for seamless updates and releases.
 - **Code Quality Checks**: Integration of SonarQube for static code analysis and quality assurance.
