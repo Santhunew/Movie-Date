@@ -39,7 +39,7 @@ The **Valentine’s Day Web App CICD Project** is a fun and interactive web appl
 
 ## Setup Instructions
 
-## Step 1 - Launch an EC2 Instance on AWS
+### Step 1 - Launch an EC2 Instance on AWS
 
 ### Launch EC2 Instance
 
@@ -82,7 +82,7 @@ The **Valentine’s Day Web App CICD Project** is a fun and interactive web appl
 
 Once the EC2 instance is launched, you can connect to it using MobaXterm for SSH access.
 
-#### Step 1: Download and Install MobaXterm
+#### Step 3: Download and Install MobaXterm
 
 1. **Download MobaXterm**:
    - Go to the [MobaXterm official website](https://mobaxterm.mobatek.net/download.html) and download the **Home Edition**.
@@ -90,7 +90,7 @@ Once the EC2 instance is launched, you can connect to it using MobaXterm for SSH
 2. **Install MobaXterm**:
    - Open the downloaded installer and follow the on-screen instructions to install MobaXterm on your computer.
 
-#### Step 2: Connect to the EC2 Instance
+#### Step 4: Connect to the EC2 Instance
 
 1. **Open MobaXterm** and select **Session** from the top menu.
 2. Choose **SSH** as the session type.
@@ -98,4 +98,5 @@ Once the EC2 instance is launched, you can connect to it using MobaXterm for SSH
 4. Select **Specify Username** and enter `ubuntu` (for Ubuntu instances).
 5. Under **Advanced SSH settings**, upload your **PEM key file** (the key pair you selected during EC2 setup).
 6. Click **OK** to connect.
+
 
