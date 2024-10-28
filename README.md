@@ -99,7 +99,8 @@ Once the EC2 instance is launched, you can connect to it using MobaXterm for SSH
 5. Under **Advanced SSH settings**, upload your **PEM key file** (the key pair you selected during EC2 setup).
 6. Click **OK** to connect.
 
-### Steps to Install Jenkins
+#### Steps 5: Install Jenkins
+
 #### Step 1: Create the Installation Script
 Create a file named jenkins.sh with the following content:
 
@@ -107,21 +108,21 @@ Create a file named jenkins.sh with the following content:
 ```bash
 sudo apt update
 ```
-# Install Java 17 (headless)
+## Install Java 17 (headless)
 ```bash
 sudo apt install openjdk-17-jre-headless -y
 ```
-# Add Jenkins GPG key and repository
+## Add Jenkins GPG key and repository
 ```bash
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 ```
-# Update package list with Jenkins repository and install Jenkins
+## Update package list with Jenkins repository and install Jenkins
 ```bash
 sudo apt-get update
 sudo apt-get install jenkins -y
 ```
-# Enable Jenkins to start on boot
+## Enable Jenkins to start on boot
 ```bash
 sudo systemctl enable jenkins
 ```
