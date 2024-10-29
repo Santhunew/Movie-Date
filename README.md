@@ -1,43 +1,3 @@
-# Valentine’s Day Web App CICD Project
-
-## Project Overview
-The **Valentine’s Day Web App CICD Project** is a fun and interactive web application designed for Valentine's Day. It features a unique interface where users can engage with romantic prompts and select dates. This project showcases the implementation of Continuous Integration and Continuous Deployment (CICD) practices using modern DevOps tools.
-
-## Project Architecture Diagram
-
-![AWS Project Architecture Diagram](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-
-
-## Features
-
-- **Interactive User Interface**: Engaging front-end that allows users to select dates and respond to romantic questions.
-- **CICD Pipeline**: Automated build, test, and deployment processes for seamless updates and releases.
-- **Code Quality Checks**: Integration of SonarQube for static code analysis and quality assurance.
-- **Security Scanning**: Use of Trivy to scan Docker images for vulnerabilities.
-- **Dockerization**: Containerized application for consistent deployment across different environments.
-- **Live Deployment**: Real-time updates and deployment to a production environment.
-
-## Tools & Technologies
-
-1. **Development**
-   - **Java**: Backend programming language for the application.
-   - **Jenkins**: Automation server for setting up the CICD pipeline.
-   - **SonarQube**: For code quality checks and static analysis.
-
-2. **Containerization**
-   - **Docker**: To create, deploy, and run applications in containers.
-   - **Docker Hub**: Repository for storing and sharing Docker images.
-
-3. **Security**
-   - **Trivy**: Security scanner for detecting vulnerabilities in Docker images.
-
-4. **Deployment**
-   - **Jenkins**: Continues to be used for deploying the application through its pipeline.
-
-5. **Version Control**
-   - **GitHub**: For version control and collaboration on the source code.
-
-## Setup Instructions
 
 # Valentine’s Day Web App CICD Project
 
@@ -47,7 +7,6 @@ The **Valentine’s Day Web App CICD Project** is a fun and interactive web appl
 ## Project Architecture Diagram
 
 ![AWS Project Architecture Diagram](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-
 
 ## Features
 
@@ -104,8 +63,7 @@ To allow required traffic, set up your security group with these inbound rules:
 
 ![Inbound Rule Image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-
-**Review** the settings, then click **Launch**
+**Review** the settings, then click **Launch**.  
 **Key Pair**: Create or select an existing key pair for SSH access.
 
 ## Connect to EC2
@@ -116,16 +74,17 @@ To SSH into your instance, use the key pair you selected:
 ssh -i "your-key-pair.pem" ubuntu@<your-ec2-public-dns>
 ```
 
-## Step 2 - Installing Jenkins file one the Instance
+## Step 2 - Installing Jenkins on the Instance
 
-### If you need to run jenkins try to install first java.
+### If you need to run Jenkins, try to install Java first.
+
 ```bash
-sudo apt install openjdk-17-jdk-headless
+sudo apt install openjdk-17-jdk-headless -y
 ```
 
-### write the script for installing Jenkins
-- use Vi editor or nano for creating script. 
-- script file name vi jenkins.sh
+### Write the script for installing Jenkins
+- Use Vi editor or nano for creating the script. 
+- Script file name: `vi jenkins.sh`
 ```bash
 
   sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
@@ -137,88 +96,87 @@ sudo apt install openjdk-17-jdk-headless
   sudo apt-get install jenkins
 
 ```
-
-- Give the permissions of executable file to jenkins.sh
+- Give executable permissions to `jenkins.sh`.
 
 ```bash
   chmod +x jenkins.sh
-  ```
-- Execute the script
+  
+```
+- Execute the script.
 
 ```bash
   ./jenkins.sh
 ```
-- Enable the Jenkins Server
-
+- Enable the Jenkins Server.
 ```bash
   systemctl enable jenkins
   systemctl status jenkins
 ```
-![jenkins status image ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Jenkins status image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
 ### Step 3 - Install Docker and Start the SonarQube Container
 
-- Command for Installing and configuring Docker
+- Command for installing and configuring Docker.
+
 ```bash
   sudo apt install docker.io -y
   sudo chmod 666 /var/run/docker.sock
 ```
-Check Docker
+- Check Docker.
 ```bash
   docker -v
 ```
-- Run the SonarQube Container
+
+- Run the SonarQube Container.
+
 ```bash
   docker run -d -p 9000:9000 sonarqube:lts-community
 ```
-![Pull Docker image ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Pull Docker image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
 ### Step 4 - Access the SonarQube Server
 
-- Open the SonarQube Server with public-ip:9000
-![sonarqube server admin image ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+- Open the SonarQube Server with `public-ip:9000`.
 
+![SonarQube server admin image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
 ```bash 
 Initial Username - admin
 
 Initial Password - admin
 
-Set new password according to yourself
 ```
 
-- Go to Administration option → Security → Users → Generate Token → Copy the token ID
+- Set a new password according to your preference.
 
+- Go to the Administration option → Security → Users → Generate Token → Copy the token ID.
 
-![sonarqube token image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![SonarQube token image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-![sonarqube token image 2 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![SonarQube token image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-### Step 5 - Configure the Jenkins server
-- Access the Jenkins server by public-ip:8080
+### Step 5 - Configure the Jenkins Server
+- Access the Jenkins server by `public-ip:8080`.
 
-![Access jenkins admin image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Access Jenkins admin image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-
-- Run the command on the terminal to get the genkins bydefult Password
+- Run the command on the terminal to get the Jenkins default password.
 ```bash
-  cat /var/lib/jenkins/secrets/initialAdminPassword
+  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
-- Copy and paste the password on Jenkins
+- Copy and paste the password into Jenkins.
 
-![create new jenkins admin image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Create new Jenkins admin image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-- Then Click on Install suggested plugins and after that enter your details in it and finally you move to Jenkins dashboard.
+- Then click on Install suggested plugins. After that, enter your details, and finally, you will move to the Jenkins dashboard.
 
-![Custmize jenkins image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Customize Jenkins image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
+- Install some plugins on Jenkins:
 
+- Go to Manage Jenkins → Plugins → Available plugins → Install.
 
-
-- Install some plugins on Jenkins -
-
-- Go to Manage Jenkins → Plugins → Available plugins →Install 
-```
+``` bash 
 SonarQube.
 SonarQube Scanner. 
 Docker. 
@@ -227,13 +185,12 @@ docker-build-step.
 Pipeline: Stage-view (Note: ater install pipeline stage
 plugin you see error just ignor beacuse this version plugin capatable with jenkins current version but stell this is work)
 ```
+![Plugin installing image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-![plugin installing image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+### Step 6 - Setup Trivy for Scanning Images and Apps
 
-### Step 6 - Setup the Trivy for Scanning Image and App
-
-- Write the script for installing trivy on your instance
-- file name is vi trivy.sh
+- Write the script for installing Trivy on your instance.
+- File name: `vi trivy.sh`.
 ```bash
 sudo apt-get install wget apt-transport-https gnupg lsb-release -y
   wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
@@ -241,61 +198,60 @@ sudo apt-get install wget apt-transport-https gnupg lsb-release -y
   sudo apt-get update
   sudo apt-get install trivy -y
 ```
-- give the permissions of executable file to trivy.sh
+- Give executable permissions to `trivy.sh`.
 ```bash 
 chmod +x trivy.sh
 ```
-- Execute the script
+- Execute the script.
 ```bash 
 ./trivy.sh
 ```
-- Check trivy version
+- Check the Trivy version.
 ```bash
 trivy -v
 ```
+
 ### Step 7 - Setup Jenkins Pipeline
-- Go to Manage Jenkins → Tools → SonarQube Scanner 
+- Go to Manage Jenkins → Tools → SonarQube Scanner.
 
-![Jenkins pipeline image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Jenkins pipeline image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-- Then Docker Installations
-![Jenkins pipeline image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+- Then Docker Installations.
+![Jenkins pipeline image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
+- Add credentials for GitHub & SonarQube to build the pipeline.
 
-- Add credentials of GitHub & SonarQube for building pipeline, SonarQube
 ```bash
 Go to Manage Jenkins → Credentials → Global → Add Credentials
 ```
-- Add Sonar-cred
+- Add Sonar-cred.
 
-![Sonar-cred image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Sonar-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
+- Add Git-cred.
 
-- Add Git-cred
+![Git-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-![Git-cred image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+- Add Docker-cred.
 
+![Docker-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-- Add Docker-cred
+- Add SonarQube environment variables.
 
-![Docker-cred image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-
-- Add SonarQube environment variables
 ```bash
 Go to Manage Jenkins → System → SonarQube Servers → Add SonarQube
 ```
-![SonarQube server configuration image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![SonarQube server configuration image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
 ```bash 
 Go to Dashboard → Create Job → Name: VALENTINE → Type: Pipeline → OK
 ```
-![creating pipline Dashboard image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Creating pipeline Dashboard image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-- Click on Discard Old build → Max # of build to keep: 2
-![creating pipline Dashboard image 2  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+- Click on Discard Old builds → Max # of builds to keep: 2.
+![Creating pipeline Dashboard image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-- Now write the pipeline script
-
+- Now write the pipeline script.
 ```bash 
   pipeline {
       agent any
@@ -357,37 +313,43 @@ Go to Dashboard → Create Job → Name: VALENTINE → Type: Pipeline → OK
           }
       }
   }
-```
-- For writing scripts, take help of Pipeline Syntax
+  ```
+- For writing scripts, take help from Pipeline Syntax.
+
+### Step 8 - Create Sample Pipeline Syntax Steps
 
 ```bash 
 Go to Pipeline Syntax → Click on Sample text and Select git: Git → Paste the URL of the repository → Select branch main → Choose credentials of git → Generate Script. Copy and paste it stage (“Git Checkout”).
 ```
+![Creating sample pipeline code image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-![creating sample pipline code  image 1  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+- Similarly, create scripts for each stage using Pipeline Syntax.
 
-- Similarly Create Scripts for each stage using Pipeline Syntax.
-
+### Step 9 - Build Pipeline & Run
 - Click on Apply and then Build Now.
 
-![Pipeline Build & run image 2  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Pipeline Build & Run image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-- Now access it with the public-ip:8081/yes.html
-![access Deploy web app image 1  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+### Step 10 - Check SonarQube Report Status
+- You can check the SonarQube Server for details.
+![SonarQube project report status image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-- You can SonarQube Server and Check the details.
-![sonarqube project report status image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+### Step 11 - Final Execution
+- Now access it with `public-ip:8081/yes.html`.
+![Access Deploy web app image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
+![Access Deploy web app image 2
 
-![access Deploy web app image 1  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
+![Access Deploy web app image 3](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-![access Deploy web app image 1  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-
-**Thank you for reading my README file!😊**
+**Thank you for reading my README file! 😊**
 
 **Feel free to connect with me:**
 
 - **LinkedIn**: [Anil Rupnar](https://www.linkedin.com/in/anilrupnar/)
 - **Email**: anilrupnar2003@gmail.com
+```
 
+This version corrects grammatical mistakes while maintaining your original structure and content. Let me know if you need further assistance!
