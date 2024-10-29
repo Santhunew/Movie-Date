@@ -39,91 +39,355 @@ The **Valentine’s Day Web App CICD Project** is a fun and interactive web appl
 
 ## Setup Instructions
 
-### Step 1 - Launch an EC2 Instance on AWS
+# Valentine’s Day Web App CICD Project
+
+## Project Overview
+The **Valentine’s Day Web App CICD Project** is a fun and interactive web application designed for Valentine's Day. It features a unique interface where users can engage with romantic prompts and select dates. This project showcases the implementation of Continuous Integration and Continuous Deployment (CICD) practices using modern DevOps tools.
+
+## Project Architecture Diagram
+
+![AWS Project Architecture Diagram](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+
+## Features
+
+- **Interactive User Interface**: Engaging front-end that allows users to select dates and respond to romantic questions.
+- **CICD Pipeline**: Automated build, test, and deployment processes for seamless updates and releases.
+- **Code Quality Checks**: Integration of SonarQube for static code analysis and quality assurance.
+- **Security Scanning**: Use of Trivy to scan Docker images for vulnerabilities.
+- **Dockerization**: Containerized application for consistent deployment across different environments.
+- **Live Deployment**: Real-time updates and deployment to a production environment.
+
+## Tools & Technologies
+
+1. **Development**
+   - **Java**: Backend programming language for the application.
+   - **Jenkins**: Automation server for setting up the CICD pipeline.
+   - **SonarQube**: For code quality checks and static analysis.
+
+2. **Containerization**
+   - **Docker**: To create, deploy, and run applications in containers.
+   - **Docker Hub**: Repository for storing and sharing Docker images.
+
+3. **Security**
+   - **Trivy**: Security scanner for detecting vulnerabilities in Docker images.
+
+4. **Deployment**
+   - **Jenkins**: Continues to be used for deploying the application through its pipeline.
+
+5. **Version Control**
+   - **GitHub**: For version control and collaboration on the source code.
+
+## Setup Instructions
+
+## Step 1 - Launch an EC2 Instance on AWS
 
 ### Launch EC2 Instance
 
-1. **Log in to the AWS Console**:
-   - Navigate to the [AWS Console](https://aws.amazon.com/console/) and go to the EC2 dashboard.
+**Log in** to the AWS Console, navigate to the **EC2 dashboard**, and click **Launch Instance**.
 
-2. **Start a New Instance**:
-   - Click on **Launch Instance**.
+**Select an AMI**:
+   - Choose **Ubuntu Server** as the AMI.
+   - Select an instance type (e.g., `t2.medium`).
+   - Proceed through the configuration steps.
 
-3. **Select AMI**:
-   - Choose **Ubuntu Server** as the Amazon Machine Image (AMI).
+## Configure Security Group
 
-4. **Choose Instance Type**:
-   - Select an instance type, such as **t2.medium**, to balance performance and cost.
+To allow required traffic, set up your security group with these inbound rules:
 
-5. **Configure Instance**:
-   - Proceed through the configuration settings as needed.
+- **Port 80** - For HTTP requests.
+- **Port 443** - For HTTPS requests.
+- **Port 22** - For SSH access.
+- **Port 9000** - For SonarQube server access.
+- **Port 8080** - For Jenkins server access.
+- **Port 8081** - For our dating app.
 
-### Configure Security Group
+![Inbound Rule Image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-1. **Create or Select a Security Group**:
-   - Create a new security group or select an existing one to manage access.
 
-2. **Add Inbound Rules**:
-   - Configure the following inbound rules to allow access to various services:
-     - **Port 80** - for HTTP requests
-     - **Port 443** - for HTTPS requests
-     - **Port 22** - for SSH access
-     - **Port 9000** - for SonarQube server access
-     - **Port 8080** - for Jenkins server access
-     - **Port 8081** - for the Dating App
+**Review** the settings, then click **Launch**
+**Key Pair**: Create or select an existing key pair for SSH access.
 
-3. **Review and Launch**:
-   - Review all settings, then click **Launch**.
+## Connect to EC2
 
-4. **Key Pair for SSH**:
-   - Choose an existing key pair or create a new key pair for SSH access to the instance.
+To SSH into your instance, use the key pair you selected:
 
-### Connect to the EC2 Instance using MobaXterm
-
-Once the EC2 instance is launched, you can connect to it using MobaXterm for SSH access.
-
-#### Step 3: Download and Install MobaXterm
-
-1. **Download MobaXterm**:
-   - Go to the [MobaXterm official website](https://mobaxterm.mobatek.net/download.html) and download the **Home Edition**.
-
-2. **Install MobaXterm**:
-   - Open the downloaded installer and follow the on-screen instructions to install MobaXterm on your computer.
-
-#### Step 4: Connect to the EC2 Instance
-
-1. **Open MobaXterm** and select **Session** from the top menu.
-2. Choose **SSH** as the session type.
-3. In the **Remote Host** field, enter the **Public IP address** of your EC2 instance (found in the EC2 console).
-4. Select **Specify Username** and enter `ubuntu` (for Ubuntu instances).
-5. Under **Advanced SSH settings**, upload your **PEM key file** (the key pair you selected during EC2 setup).
-6. Click **OK** to connect.
-
-#### Steps 5: Install Jenkins
-
-#### Step 1: Create the Installation Script
-Create a file named jenkins.sh with the following content:
-
-# Update package list
 ```bash
-sudo apt update
+ssh -i "your-key-pair.pem" ubuntu@<your-ec2-public-dns>
 ```
-## Install Java 17 (headless)
+
+## Step 2 - Installing Jenkins file one the Instance
+
+### If you need to run jenkins try to install first java.
 ```bash
-sudo apt install openjdk-17-jre-headless -y
+sudo apt install openjdk-17-jdk-headless
 ```
-## Add Jenkins GPG key and repository
+
+### write the script for installing Jenkins
+- use Vi editor or nano for creating script. 
+- script file name vi jenkins.sh
 ```bash
-sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+    https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+  echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+  sudo apt-get update
+  sudo apt-get install jenkins
+
 ```
-## Update package list with Jenkins repository and install Jenkins
+
+- Give the permissions of executable file to jenkins.sh
+
 ```bash
-sudo apt-get update
-sudo apt-get install jenkins -y
-```
-## Enable Jenkins to start on boot
+  chmod +x jenkins.sh
+  ```
+- Execute the script
+
 ```bash
-sudo systemctl enable jenkins
+  ./jenkins.sh
 ```
+- Enable the Jenkins Server
+
+```bash
+  systemctl enable jenkins
+  systemctl status jenkins
+```
+![jenkins status image ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+### Step 3 - Install Docker and Start the SonarQube Container
+
+- Command for Installing and configuring Docker
+```bash
+  sudo apt install docker.io -y
+  sudo chmod 666 /var/run/docker.sock
+```
+Check Docker
+```bash
+  docker -v
+```
+- Run the SonarQube Container
+```bash
+  docker run -d -p 9000:9000 sonarqube:lts-community
+```
+![Pull Docker image ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+### Step 4 - Access the SonarQube Server
+
+- Open the SonarQube Server with public-ip:9000
+![sonarqube server admin image ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+
+```bash 
+Initial Username - admin
+
+Initial Password - admin
+
+Set new password according to yourself
+```
+
+- Go to Administration option → Security → Users → Generate Token → Copy the token ID
+
+
+![sonarqube token image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+![sonarqube token image 2 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+### Step 5 - Configure the Jenkins server
+- Access the Jenkins server by public-ip:8080
+
+![Access jenkins admin image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+
+- Run the command on the terminal to get the genkins bydefult Password
+```bash
+  cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+- Copy and paste the password on Jenkins
+
+![create new jenkins admin image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+- Then Click on Install suggested plugins and after that enter your details in it and finally you move to Jenkins dashboard.
+
+![Custmize jenkins image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+
+
+
+- Install some plugins on Jenkins -
+
+- Go to Manage Jenkins → Plugins → Available plugins →Install 
+```
+SonarQube.
+SonarQube Scanner. 
+Docker. 
+Docker Pipeline. 
+docker-build-step. 
+Pipeline: Stage-view (Note: ater install pipeline stage
+plugin you see error just ignor beacuse this version plugin capatable with jenkins current version but stell this is work)
+```
+
+![plugin installing image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+### Step 6 - Setup the Trivy for Scanning Image and App
+
+- Write the script for installing trivy on your instance
+- file name is vi trivy.sh
+```bash
+sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+  wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+  echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+  sudo apt-get update
+  sudo apt-get install trivy -y
+```
+- give the permissions of executable file to trivy.sh
+```bash 
+chmod +x trivy.sh
+```
+- Execute the script
+```bash 
+./trivy.sh
+```
+- Check trivy version
+```bash
+trivy -v
+```
+### Step 7 - Setup Jenkins Pipeline
+- Go to Manage Jenkins → Tools → SonarQube Scanner 
+
+![Jenkins pipeline image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+- Then Docker Installations
+![Jenkins pipeline image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+
+- Add credentials of GitHub & SonarQube for building pipeline, SonarQube
+```bash
+Go to Manage Jenkins → Credentials → Global → Add Credentials
+```
+- Add Sonar-cred
+
+![Sonar-cred image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+
+- Add Git-cred
+
+![Git-cred image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+
+- Add Docker-cred
+
+![Docker-cred image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+- Add SonarQube environment variables
+```bash
+Go to Manage Jenkins → System → SonarQube Servers → Add SonarQube
+```
+![SonarQube server configuration image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+```bash 
+Go to Dashboard → Create Job → Name: VALENTINE → Type: Pipeline → OK
+```
+![creating pipline Dashboard image 1 ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+- Click on Discard Old build → Max # of build to keep: 2
+![creating pipline Dashboard image 2  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+- Now write the pipeline script
+
+```bash 
+  pipeline {
+      agent any
+      environment{
+          SCANNER_HOME= tool 'sonar-scanner'
+      }
+
+      stages {
+          stage('Git Checkout') {
+              steps {
+                  git branch: 'main', credentialsId: 'git-cred', url: 'https://github.com/https://github.com/anilrupnar/Valentine-Day-Web-App'
+              }
+          }
+
+          stage('Trivy FileSystem Scan') {
+              steps {
+                  sh "trivy fs --format table -o trivy-fs-report.html ."
+              }
+          }
+
+          stage('Sonarqube Analysis') {
+              steps {
+                  withSonarQubeEnv('sonar'){
+                      sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=Valentine -Dsonar.projectName=Valentine"
+                  }
+              }
+          }
+
+          stage('Build & Tag Docker Image') {
+              steps {
+                  script{
+                      withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                          sh "docker build -t anilrupnar/valentine:v1 ."
+                      }
+                  }
+              }
+          }
+
+          stage('Trivy Image Scan') {
+              steps {
+                  sh "trivy image --format json -o trivy-image-report.json anilrupnar/valentine:v1"
+              }
+          }
+
+          stage('Push Docker Image') {
+              steps {
+                  script{
+                      withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                          sh "docker push anilrupnar/valentine:v1 "
+                      }
+                  }
+              }
+          }
+
+          stage('Deploy to container') {
+              steps {
+                  sh "docker run -d -p 8081:80 anilrupnar/valentine:v1"
+              }
+          }
+      }
+  }
+```
+- For writing scripts, take help of Pipeline Syntax
+
+```bash 
+Go to Pipeline Syntax → Click on Sample text and Select git: Git → Paste the URL of the repository → Select branch main → Choose credentials of git → Generate Script. Copy and paste it stage (“Git Checkout”).
+```
+
+![creating sample pipline code  image 1  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+- Similarly Create Scripts for each stage using Pipeline Syntax.
+
+- Click on Apply and then Build Now.
+
+![Pipeline Build & run image 2  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+- Now access it with the public-ip:8081/yes.html
+![access Deploy web app image 1  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+- You can SonarQube Server and Check the details.
+![sonarqube project report status image  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+
+![access Deploy web app image 1  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+
+![access Deploy web app image 1  ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+**Thank you for reading my README file!😊**
+
+**Feel free to connect with me:**
+
+- **LinkedIn**: [Anil Rupnar](https://www.linkedin.com/in/anilrupnar/)
+- **Email**: anilrupnar2003@gmail.com
 
