@@ -151,7 +151,7 @@ Initial Password - admin
 
 - Go to the Administration option → Security → Users → Generate Token → Copy the token ID.
 
-![SonarQube token image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/SonarQube%20token%20image%201.pngf)
+![SonarQube token image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/SonarQube%20token%20image%201.png)
 
 ![SonarQube token image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/SonarQube%20token%20image%202.png)
 
