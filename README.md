@@ -61,7 +61,7 @@ To allow required traffic, set up your security group with these inbound rules:
 - **Port 8080** - For Jenkins server access.
 - **Port 8081** - For our dating app.
 
-![Inbound Rule Image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Inbound Rule Image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Inbound%20Rules.png)
 
 **Review** the settings, then click **Launch**.  
 **Key Pair**: Create or select an existing key pair for SSH access.
@@ -112,7 +112,7 @@ sudo apt install openjdk-17-jdk-headless -y
   systemctl enable jenkins
   systemctl status jenkins
 ```
-![Jenkins status image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Jenkins status image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Jenkins%20status%20image.png)
 
 ### Step 3 - Install Docker and Start the SonarQube Container
 
@@ -132,13 +132,13 @@ sudo apt install openjdk-17-jdk-headless -y
 ```bash
   docker run -d -p 9000:9000 sonarqube:lts-community
 ```
-![Pull Docker image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Pull Docker image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Pull%20Docker%20image.png)
 
 ### Step 4 - Access the SonarQube Server
 
 - Open the SonarQube Server with `public-ip:9000`.
 
-![SonarQube server admin image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![SonarQube server admin image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/SonarQube%20server%20admin%20image.png)
 
 ```bash 
 Initial Username - admin
@@ -151,14 +151,14 @@ Initial Password - admin
 
 - Go to the Administration option → Security → Users → Generate Token → Copy the token ID.
 
-![SonarQube token image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![SonarQube token image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/SonarQube%20token%20image%201.pngf)
 
-![SonarQube token image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![SonarQube token image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/SonarQube%20token%20image%202.png)
 
 ### Step 5 - Configure the Jenkins Server
 - Access the Jenkins server by `public-ip:8080`.
 
-![Access Jenkins admin image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Access Jenkins admin image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Access%20Jenkins%20admin%20image%201.png)
 
 - Run the command on the terminal to get the Jenkins default password.
 ```bash
@@ -166,11 +166,11 @@ Initial Password - admin
 ```
 - Copy and paste the password into Jenkins.
 
-![Create new Jenkins admin image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Create new Jenkins admin image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Create%20new%20Jenkins%20admin%20image%201.png)
 
 - Then click on Install suggested plugins. After that, enter your details, and finally, you will move to the Jenkins dashboard.
 
-![Customize Jenkins image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Customize Jenkins image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Customize%20Jenkins%20image%201.png)
 
 - Install some plugins on Jenkins:
 
@@ -185,7 +185,7 @@ docker-build-step.
 Pipeline: Stage-view (Note: ater install pipeline stage
 plugin you see error just ignor beacuse this version plugin capatable with jenkins current version but stell this is work)
 ```
-![Plugin installing image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Plugin installing image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Plugin%20installing%20image%201.png)
 
 ### Step 6 - Setup Trivy for Scanning Images and Apps
 
@@ -214,10 +214,10 @@ trivy -v
 ### Step 7 - Setup Jenkins Pipeline
 - Go to Manage Jenkins → Tools → SonarQube Scanner.
 
-![Jenkins pipeline image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Jenkins pipeline image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Docker%20pipeline%20image%202.png)
 
 - Then Docker Installations.
-![Docker pipeline image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Docker pipeline image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Docker%20pipeline%20image%202.png)
 
 - Add credentials for GitHub & SonarQube to build the pipeline.
 
@@ -226,30 +226,30 @@ Go to Manage Jenkins → Credentials → Global → Add Credentials
 ```
 - Add Sonar-cred.
 
-![Sonar-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Sonar-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Sonar-cred%20image.png)
 
 - Add Git-cred.
 
-![Git-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Git-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Git-cred%20image.png)
 
 - Add Docker-cred.
 **Note: user your docker hub account username & passowrd.**
-![Docker-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Docker-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Docker-cred%20image.png)
 
 - Add SonarQube environment variables.
 
 ```bash
 Go to Manage Jenkins → System → SonarQube Servers → Add SonarQube
 ```
-![SonarQube server configuration image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![SonarQube server configuration image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/SonarQube%20server%20configuration%20image.png)
 
 ```bash 
 Go to Dashboard → Create Job → Name: VALENTINE → Type: Pipeline → OK
 ```
-![Creating pipeline Dashboard image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Creating pipeline Dashboard image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Creating%20pipeline%20Dashboard%20image%201.png)
 
 - Click on Discard Old builds → Max # of builds to keep: 2.
-![Creating pipeline Dashboard image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Creating pipeline Dashboard image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Creating%20pipeline%20Dashboard%20image%202.png)
 
 - Now write the pipeline script.
 ```bash 
@@ -321,33 +321,33 @@ Go to Dashboard → Create Job → Name: VALENTINE → Type: Pipeline → OK
 ```bash 
 Go to Pipeline Syntax → Click on Sample text and Select git: Git → Paste the URL of the repository → Select branch main → Choose credentials of git → Generate Script. Copy and paste it stage (“Git Checkout”).
 ```
-![Creating sample pipeline code image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Creating sample pipeline code image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Creating%20sample%20pipeline%20code%20image%201.png)
 
 - Similarly, create scripts for each stage using Pipeline Syntax.
 
 ### Step 9 - Build Pipeline & Run
 - Click on Apply and then Build Now.
 
-![Pipeline Build & Run image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Pipeline Build & Run image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Pipeline%20Build%20%26%20Run%20image%201.png)
 
-![Pipeline Build & Run image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Pipeline Build & Run image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Pipeline%20Build%20%26%20Run%20image%202.png)
 
-![Pipeline Build & Run image 3](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-
-### Pipline console results
-![Pipline console results image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-
-![Pipline console results image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-
-### Docker Image Pushed On Docker Hub Repository 
-
-![Docker Image Pushed image ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Pipeline Build & Run image 3](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Pipeline%20Build%20%26%20Run%20image%203.png)
 
 ### Step 10 - Check SonarQube Report Status
 - You can check the SonarQube Server for details.
-![SonarQube project report status image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![SonarQube project report status image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/SonarQube%20project%20report%20status%20image.png)
 
-### Step 11 - Final Execution
+### Step 11 - Pipline console results
+![Pipline console results image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Pipline%20console%20results%20image%202.png)
+
+![Pipline console results image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Pipline%20console%20results%20image%201.png)
+
+### Step 12 - Docker Image Pushed On Docker Hub Repository 
+
+![Docker Image Pushed image ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Docker%20Image%20Pushed%20image.png)
+
+### Step 13 - Final Execution
 - Now access it with `public-ip:8081/yes.html`.
 ![Access Deploy web app image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Access%20Deploy%20web%20app%20image%201.png)
 
