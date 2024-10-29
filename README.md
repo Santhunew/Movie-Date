@@ -334,6 +334,15 @@ Go to Pipeline Syntax → Click on Sample text and Select git: Git → Paste the
 
 ![Pipeline Build & Run image 3](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
+### Pipline console results
+![Pipline console results image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+![Pipline console results image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+### Docker Image Pushed On Docker Hub Repository 
+
+![Docker Image Pushed image ](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
 ### Step 10 - Check SonarQube Report Status
 - You can check the SonarQube Server for details.
 ![SonarQube project report status image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
@@ -342,11 +351,10 @@ Go to Pipeline Syntax → Click on Sample text and Select git: Git → Paste the
 - Now access it with `public-ip:8081/yes.html`.
 ![Access Deploy web app image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
-![Access Deploy web app image 2
-
-](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-
+![Access Deploy web app image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 ![Access Deploy web app image 3](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Access Deploy web app image 4](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
 
 **Thank you for reading my README file! 😊**
 
