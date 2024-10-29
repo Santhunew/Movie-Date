@@ -217,7 +217,7 @@ trivy -v
 ![Jenkins pipeline image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
 - Then Docker Installations.
-![Jenkins pipeline image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Docker pipeline image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
 - Add credentials for GitHub & SonarQube to build the pipeline.
 
@@ -233,7 +233,7 @@ Go to Manage Jenkins → Credentials → Global → Add Credentials
 ![Git-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
 - Add Docker-cred.
-
+**Note: user your docker hub account username & passowrd.**
 ![Docker-cred image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
 - Add SonarQube environment variables.
@@ -328,7 +328,11 @@ Go to Pipeline Syntax → Click on Sample text and Select git: Git → Paste the
 ### Step 9 - Build Pipeline & Run
 - Click on Apply and then Build Now.
 
-![Pipeline Build & Run image](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Pipeline Build & Run image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+![Pipeline Build & Run image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+
+![Pipeline Build & Run image 3](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
 
 ### Step 10 - Check SonarQube Report Status
 - You can check the SonarQube Server for details.
