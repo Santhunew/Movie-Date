@@ -349,11 +349,13 @@ Go to Pipeline Syntax → Click on Sample text and Select git: Git → Paste the
 
 ### Step 11 - Final Execution
 - Now access it with `public-ip:8081/yes.html`.
-![Access Deploy web app image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Access Deploy web app image 1](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Access%20Deploy%20web%20app%20image%201.png)
 
-![Access Deploy web app image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-![Access Deploy web app image 3](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
-![Access Deploy web app image 4](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/project%20architecture%20diagram.gif)
+![Access Deploy web app image 2](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Access%20Deploy%20web%20app%20image%202.png)
+
+![Access Deploy web app image 3](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Access%20Deploy%20web%20app%20image%203.png)
+
+![Access Deploy web app image 4](https://github.com/anilrupnar/Valentine-Day-Web-App/blob/main/Images/Access%20Deploy%20web%20app%20image%204.png)
 
 
 **Thank you for reading my README file! 😊**
