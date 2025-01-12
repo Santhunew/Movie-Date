@@ -1,5 +1,5 @@
-resource "aws_security_group" "webappsg" {
-  name = "Mine_webappsg"
+resource "aws_security_group" "webappsg1" {
+  name = "mine_webappsg"
   description = "Allow HTTP and SSH inbound traffic"
 
 ingress {
