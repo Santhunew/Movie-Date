@@ -55,7 +55,7 @@ egress {
 resource "aws_instance" "webapp" {
   ami = var.ami_id
   instance_type = var.instance_type
-  key_name = var.key_name
+  key_name = "Santhu"
   security_groups = [aws_security_group.webappsg.name]
   tags = {
     Name = "webapp_tg"
