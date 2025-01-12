@@ -10,14 +10,4 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "key_name" {
-  description = "value of the key name"
-  type = string
-  default = "Santhu"
-}
 
-variable "region" {
-  description = "value of the region"
-  type = string
-  default = "ap-sounth-1"
-}
