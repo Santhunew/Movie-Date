@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(rgb(235, 114, 218), rgb(71, 150, 229));
+    background: linear-gradient(rgb(175, 235, 114), rgb(0, 0, 0));
   }
   
   #noButton {
@@ -26,14 +26,14 @@ body {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: #080000;
   }
   
   .text {
     font-family: "Nunito";
     font-size: 25px;
     font-weight: bold;
-    color: white;
+    color: rgb(255, 2, 2);
     text-align: center;
     margin-top: 20px;
     margin-bottom: 0px;
@@ -49,8 +49,8 @@ body {
   }
   
   .btn {
-    background-color: #0abac0;
-    color: white;
+    background-color: #0ac03e;
+    color: rgb(7, 0, 0);
     font-weight: 600;
     padding: 15px 32px;
     text-align: center;
@@ -66,7 +66,7 @@ body {
   
   .btn:hover {
     background-color: #ffffff;
-    color: #017cff;
+    color: #ff2b01;
   }
   
   .gif_container {
@@ -76,7 +76,7 @@ body {
   }
   
   p {
-    color: white;
+    color: rgb(5, 0, 0);
     margin-left: 50%;
   }
   
@@ -92,17 +92,17 @@ body {
     margin-top: 30px;
     border-collapse: collapse;
     width: 300px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgb(0, 0, 0);
   }
   
   #calendar th, #calendar td {
-    padding: 15px;
+    padding: 16px;
     text-align: center;
   }
   
   #calendar th {
-    background-color: #1d97e9;
-    color: white;
+    background-color: #128900;
+    color: rgb(255, 255, 255);
   }
   
   #calendar td {
@@ -111,6 +111,6 @@ body {
   }
   
   #calendar td:hover {
-    background-color: #ecf0f1;
+    background-color: #ffffff;
   }
   
