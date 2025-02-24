@@ -211,8 +211,4 @@ resource "aws_ecs_service" "my_service" {
     task_definition = aws_ecs_task_definition.my_task.arn
     desired_count   = 1
     launch_type     = "EC2"
-
-    iam_role        = aws_iam_role.ecs_service_role.arn # Fixed IAM role reference
-
-    depends_on      = [aws_ecs_cluster.my_cluster]
 }
