@@ -30,7 +30,7 @@ variable "ecs_task_execution_role_name" {
 
 variable "ecs_cluster_name" {
   description = "The name of the ECS cluster."
-  default     = "my_cluster"
+  default     = "my_clustersanthu"
   type = string
 }
 
